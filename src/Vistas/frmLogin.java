@@ -72,7 +72,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Recursos/Imagenes/loginImage.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/loginImage.png"))); // NOI18N
 
         jpfContrasena.setBackground(new java.awt.Color(204, 204, 204));
         jpfContrasena.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
@@ -162,9 +162,10 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Usuario = jxtfUsuario.getText();
         String Contrasena = String.valueOf(jpfContrasena.getPassword());
-        ImageIcon icon = new ImageIcon("src\\Vistas\\Recursos\\ImagenesuserError.png");
         if(Usuario.equals("Admin") && Contrasena.equals("123")){
-            
+            frmPrincipal principal = new frmPrincipal();
+            principal.setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Datos de acceso erroneos", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
