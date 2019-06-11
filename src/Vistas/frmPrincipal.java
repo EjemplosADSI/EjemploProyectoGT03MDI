@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author grani
@@ -15,6 +17,7 @@ public class frmPrincipal extends javax.swing.JFrame {
      * Creates new form frmPrincipal
      */
     public frmPrincipal() {
+        JFrame.setDefaultLookAndFeelDecorated(true);
         initComponents();
     }
 

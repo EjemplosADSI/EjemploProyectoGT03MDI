@@ -12,7 +12,11 @@ import Vistas.Components.RoundedPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel;
 
 /**
  *
@@ -24,7 +28,7 @@ public class frmLogin extends javax.swing.JFrame {
      * Creates new form frmLogin
      */
     public frmLogin() {
-        initComponents();
+        initComponents();        
     }
     
     /**
@@ -199,12 +203,7 @@ public class frmLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmLogin().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

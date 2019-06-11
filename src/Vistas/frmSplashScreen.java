@@ -5,21 +5,48 @@
  */
 package Vistas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JRootPane;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+import javax.swing.UIManager;
+import org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel;
 
 /**
  *
  * @author Instructor
  */
 public class frmSplashScreen extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form frmSplashScreen
      */
     public frmSplashScreen() {
         initComponents();
     }
-
+    
+    public void openLogin(){
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
+        this.dispose();
+    }
+    
+    public void startProgress(int tiempo){
+        final Timer t = new Timer(tiempo, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jpbAplicacion.setValue(jpbAplicacion.getValue() + 1);
+                if (jpbAplicacion.getValue() == 100) {
+                  ((Timer) e.getSource()).stop();
+                  openLogin();
+                }
+            }
+        });
+        t.start();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,24 +56,52 @@ public class frmSplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jlbLogo = new javax.swing.JLabel();
+        jlbVersion = new javax.swing.JLabel();
+        jlbCopy = new javax.swing.JLabel();
         jlbWallpaper = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        jpbAplicacion = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cargando...");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/logo.png"))); // NOI18N
+        getContentPane().add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, 100));
+
+        jlbVersion.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jlbVersion.setForeground(new java.awt.Color(255, 255, 255));
+        jlbVersion.setText("V1.0");
+        getContentPane().add(jlbVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
+        jlbCopy.setBackground(new java.awt.Color(0, 0, 0));
+        jlbCopy.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jlbCopy.setText("Copyright © 2019 - Diego Ojeda - SENA");
+        getContentPane().add(jlbCopy, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 260, 20));
 
         jlbWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/splashWallpaper.jpg"))); // NOI18N
         getContentPane().add(jlbWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 351, 626, -1));
+        getContentPane().add(jpbAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 351, 626, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        startProgress(70);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -57,35 +112,33 @@ public class frmSplashScreen extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        JFrame.setDefaultLookAndFeelDecorated(false);
 
+        SwingUtilities.invokeLater(() -> {
+            try {
+              UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
+            } catch (Exception e) {
+              System.out.println("Substance Graphite failed to initialize");
+            }
+            frmSplashScreen w = new frmSplashScreen();
+            w.setVisible(true);
+        });
+
+        
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmSplashScreen().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jlbCopy;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbVersion;
     private javax.swing.JLabel jlbWallpaper;
+    private javax.swing.JProgressBar jpbAplicacion;
     // End of variables declaration//GEN-END:variables
 }
