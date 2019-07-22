@@ -68,7 +68,6 @@ public class frmLogin extends javax.swing.JFrame {
         jxtfUsuario.setPrompt("Usuario");
         jxtfUsuario.setPromptBackround(new java.awt.Color(204, 204, 204));
 
-        jxbtnIngresar.setBackground(new java.awt.Color(87, 184, 70));
         jxbtnIngresar.setText("Ingresar");
         jxbtnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +80,6 @@ public class frmLogin extends javax.swing.JFrame {
         jpfContrasena.setBackground(new java.awt.Color(204, 204, 204));
         jpfContrasena.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
 
-        jxbtnSalir.setBackground(new java.awt.Color(87, 184, 70));
         jxbtnSalir.setText("Salir");
         jxbtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

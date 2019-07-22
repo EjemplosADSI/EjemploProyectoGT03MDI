@@ -13,7 +13,12 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.UIManager;
+import org.pushingpixels.substance.api.SubstanceCortex;
+import org.pushingpixels.substance.api.skin.CremeSkin;
+import org.pushingpixels.substance.api.skin.GraphiteElectricSkin;
+import org.pushingpixels.substance.api.skin.MagellanSkin;
 import org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel;
+import org.pushingpixels.substance.api.skin.TwilightSkin;
 
 /**
  *
@@ -117,6 +122,7 @@ public class frmSplashScreen extends javax.swing.JFrame {
         SwingUtilities.invokeLater(() -> {
             try {
               UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
+              SubstanceCortex.GlobalScope.setSkin(new GraphiteElectricSkin());
             } catch (Exception e) {
               System.out.println("Substance Graphite failed to initialize");
             }
